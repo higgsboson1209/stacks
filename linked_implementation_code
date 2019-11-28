@@ -1,0 +1,107 @@
+#include<iostream>
+#include<string.h>
+#include<stdio.h>
+#include<stdlib.h>
+using namespace std;
+struct Node
+{
+float cgpa;
+char name[100];
+int age;
+struct Node* next ;
+};
+struct Node* top=NULL;
+void push(float val,char namee[100],int umar)
+{
+struct Node* newnode = (struct Node*) malloc(sizeof(struct
+Node));
+newnode->cgpa = val;
+strcpy(newnode->name,namee);
+newnode->age=umar;
+newnode->next = top;
+top = newnode;
+}
+void pop()
+{
+if(top==NULL)
+{
+cout<<"Stack underflow";
+cout<<"\n";
+}
+else
+{
+cout<<"The popped element is "<< top->name <<endl;
+top = top->next;
+}
+}
+void display()
+{
+struct Node* ptr;
+if(top==NULL)
+cout<<"stack is empty \n";
+else
+{
+ptr = top;
+cout<<"Stack elements are: \n";
+cout<<"\n";
+while (ptr != NULL)
+{
+cout<<ptr->age;
+cout<<"\n";
+cout<<ptr->cgpa;
+cout<<"\n";
+cout<<ptr->name;
+cout<<"\n";
+ptr = ptr->next;
+}
+}
+cout<<"\n";
+} int main()
+{
+int ch;
+float val;
+char nameee[100];
+int agee;
+cout<<"1) Push in stack"<<endl;
+cout<<"2) Pop from stack"<<endl;
+cout<<"3) Display stack"<<endl;
+cout<<"4) Exit"<<endl;
+do
+{
+cout<<"Enter choice: \n"<<endl;
+cin>>ch;
+switch(ch)
+{
+case 1:
+{
+cout<<"Enter value to be pushed: \n"<<endl;
+cin>>val;
+cin>>nameee;
+cin>>agee;
+push(val,nameee,agee);
+break;
+}
+case 2:
+{
+pop();
+break;
+}
+case 3:
+{
+display();
+break;
+}
+case 4:
+{
+cout<<"Exit"<<endl;
+break;
+}
+default:
+{
+cout<<"Invalid Choice"<<endl;
+}
+}
+}
+while(ch!=4);
+return 0;
+}
